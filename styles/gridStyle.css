@@ -1,0 +1,31 @@
+
+#grid-source { 
+    position: absolute;
+}
+
+#grid-overlay { 
+    position: relative;
+    z-index: 890;
+}
+
+table {
+    display: inline-table;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    table-layout: fixed;
+}
+
+:root {
+    --grid-width: 1.75px;
+}
+
+td {
+    border: var(--grid-width) solid rgb(63, 63, 63);
+    border-collapse: collapse;
+}
+
+.hover { background-color: rgba(0,0,0,0.4) !important; }
+.unselected { background-color: none; }
+.selected { background-color: rgba(100, 26, 26, 0.5); }
+.hidden { background-color: black; }
+

@@ -1,0 +1,65 @@
+
+/* hiding-tool */
+
+.dmTools {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    left: 30px;
+    top: 260px;
+
+    height: 35px;
+    width: 335px;
+    border-bottom: 2px solid rgb(200, 200, 200);
+}
+
+#switchLabel {
+    position: relative;
+    top: 18px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hideAreaSwitch {
+    position: absolute;
+    display: inline-block;
+    top: 68px;
+    left: 200px;
+    width: 60px;
+    height: 34px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 10px;
+    width: 80px;
+    height: 43px;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 31px;
+    width: 37px;
+    left: 7px;
+    bottom: 6px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 10px;
+}
+
+input:checked + .slider {
+    background-color: rgb(54, 189, 88);
+}
+  
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
