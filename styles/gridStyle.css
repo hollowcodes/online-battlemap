@@ -20,12 +20,12 @@ table {
 }
 
 td {
-    border: var(--grid-width) solid rgb(63, 63, 63);
+    border: var(--grid-width) solid rgb(63, 63, 63, 0.5);
     border-collapse: collapse;
 }
 
 .hover { background-color: rgba(0,0,0,0.4) !important; }
 .unselected { background-color: none; }
 .selected { background-color: rgba(100, 26, 26, 0.5); }
-.hidden { background-color: black; }
+.hidden { background-color: rgba(0,0,0,0.4); }
 

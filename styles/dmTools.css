@@ -12,7 +12,7 @@
     border-bottom: 2px solid rgb(200, 200, 200);
 }
 
-#switchLabel {
+#hideSwitchLabel {
     position: relative;
     top: 18px;
     font-size: 20px;
@@ -62,4 +62,21 @@ input:checked + .slider {
   
 input:checked + .slider:before {
     transform: translateX(26px);
+}
+
+/* showing-tool */ 
+#showSwitchLabel { 
+    position: absolute; 
+    top: 148px; 
+    font-size: 20px; 
+    font-family: Arial, Helvetica, sans-serif; 
+} 
+
+.showAreaSwitch { 
+    position: absolute; 
+    display: inline-block; 
+    top: 148px; 
+    left: 200px; 
+    width: 60px; 
+    height: 34px; 
 }

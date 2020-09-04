@@ -7,15 +7,15 @@
         <link rel="stylesheet" href="styles/gridStyle.css">
         <link rel="stylesheet" href="styles/dmTools.css">
 
-        <script src="grid.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="grid.js"></script>
+        <script src="sideBar.js"></script>
+
 
     </head>
 
     <body style="background-color: rgb(63, 63, 63);">
-
         <div class="sideBar">
-
             <!-- map-settings -->
             <div class="mapSettings">
                 <h1><b><i>map-settings</i></b></h1>
@@ -38,16 +38,24 @@
                     <button id="gridWidthButton" onclick="changeGridWidth()"><b>submit</b></button>
                 </div>
             </div>
-
             <!-- DM tools -->
             <div class="dmTools">
                 <h1><b><i>DM-tools</i></b></h1>
 
                 <div id="hidingTool">
-                    <label for="hideAreaSwitch" id="switchLabel"><b>hide-area tool:</b></label><br><br>
+                    <label for="hideAreaSwitch" id="hideSwitchLabel"><b>hide-area tool:</b></label><br><br>
 
                     <label class="hideAreaSwitch">
-                        <input type="checkbox" onclick="hideArea()">
+                        <input id="hideSlider" type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div id="showingTool">
+                    <label for="showAreaSwitch" id="showSwitchLabel"><b>show-area tool:</b></label><br><br>
+
+                    <label class="showAreaSwitch">
+                        <input id="showSlider" type="checkbox" onclick="showArea()">
                         <span class="slider"></span>
                     </label>
                 </div>
@@ -55,7 +63,7 @@
             </div>
         </div>
 
-        <div id="grid-source"><img src="images/battlemap2.jpg"></div>
+        <div id="grid-source"><img src="images/dungeon.jpeg"></div>
 
     </body>
 
