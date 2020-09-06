@@ -6,20 +6,26 @@
         <link rel="stylesheet" href="styles/mapSettings.css">
         <link rel="stylesheet" href="styles/gridStyle.css">
         <link rel="stylesheet" href="styles/dmTools.css">
+        <link rel="stylesheet" href="styles/sideBar.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="grid.js"></script>
         <script src="sideBar.js"></script>
-
-
     </head>
 
     <body style="background-color: rgb(63, 63, 63);">
+
+        <div class="sideTopBar">
+            <button id="minMaxButton" onclick="minMaxSidebar()"><b>-</b></button>
+        </div>
+
         <div class="sideBar">
+
             <!-- map-settings -->
             <div class="mapSettings">
                 <h1><b><i>map-settings</i></b></h1>
 
+                <!-- set/change grid size -->
                 <div id="gridSizeSetting">
                     <form>
                         <label for="boxSize" id="inputLabel"><b>box-size:</b></label><br><br>
@@ -28,7 +34,7 @@
                     
                     <button id="gridSizeButton" onclick="createGrid()"><b>submit</b></button>
                 </div>
-
+                <!-- set/change grid width -->
                 <div id="gridWidthSetting">
                     <form>
                         <label for="gridWidth" id="inputLabel"><b>grid-width:</b></label><br><br>
@@ -38,27 +44,32 @@
                     <button id="gridWidthButton" onclick="changeGridWidth()"><b>submit</b></button>
                 </div>
             </div>
+
             <!-- DM tools -->
             <div class="dmTools">
                 <h1><b><i>DM-tools</i></b></h1>
 
+                <!-- hide area -->
                 <div id="hidingTool">
                     <label for="hideAreaSwitch" id="hideSwitchLabel"><b>hide-area tool:</b></label><br><br>
 
                     <label class="hideAreaSwitch">
-                        <input id="hideSlider" type="checkbox">
+                        <input id="hideSlider" type="checkbox" onclick="disableShowArea()">
                         <span class="slider"></span>
                     </label>
                 </div>
 
+                <!-- show hidden area -->
                 <div id="showingTool">
                     <label for="showAreaSwitch" id="showSwitchLabel"><b>show-area tool:</b></label><br><br>
 
                     <label class="showAreaSwitch">
-                        <input id="showSlider" type="checkbox" onclick="showArea()">
+                        <input id="showSlider" type="checkbox" onclick="disableHideArea()">
                         <span class="slider"></span>
                     </label>
                 </div>
+
+                <!-- place NPC -->
 
             </div>
         </div>

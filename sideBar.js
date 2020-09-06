@@ -1,13 +1,15 @@
 
 
+
 function minMaxSidebar() {
-    $("#button").click(function(){
-        if($(this).html() == "-"){
-            $(this).html("+");
-        }
-        else{
-            $(this).html("-");
-        }
-        $("#sideBar").slideToggle();
-    });
+    var sideBar = document.getElementsByClassName('sideBar')[0];
+    var minMaxButton = document.getElementById('minMaxButton');
+
+    $(".sideBar").slideToggle();
+    if (minMaxButton.textContent == "-") {
+        minMaxButton.textContent = "+";
+    }
+    else {
+        minMaxButton.textContent = "-";
+    }
 }

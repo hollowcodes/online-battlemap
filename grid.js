@@ -37,19 +37,22 @@ function createGrid() {
     $wrap.append($tbl);
     $src.after($wrap);
 
-
-
-
+    // creates hover effect
     $('#grid-overlay td').hover(function() {
         $(this).toggleClass('hover');
     });
 
     $('#grid-overlay td').one('mousedown', function() {
-        var checkBox = document.getElementById('hideSlider');
-        if (checkBox.checked == false) {
+        var hideCheckBox = document.getElementById('hideSlider');
+        var showCheckBox = document.getElementById('showSlider');
+
+        // normals map click
+        if (hideCheckBox.checked == false && showCheckBox.checked == false) {
             $(this).addClass('selected').toggleClass('unselected');
         }
-        else {
+        // hides areas
+        else if(hideCheckBox.checked == true) {
+
             $(this).addClass('hidden').toggleClass('unselected');
 
             var isDown = false;
@@ -65,70 +68,86 @@ function createGrid() {
                 }
             });
         }
-    });
-}
+        // shows previous hidden areas
+        else if (showCheckBox.checked == true) {
+            $(this).removeClass('hidden').addClass('unselected');
 
-
-function hideArea() {
-
-    var checkBox = document.getElementById('hideSlider');
-
-    var isDown = false;
-    $(document).mousedown(function() {
-        isDown = true;
-    })
-    .mouseup(function() {
-        isDown = false;
-    });
-
-    /*$('#grid-overlay td').click(function() {
-        $(this).toggleClass('hidden').toggleClass('unselected').removeClass('selected');
-        console.log(1);
-    });*/
-
-    $('#grid-overlay td').mouseover(function() {
-        if(isDown) {
-            $(this).toggleClass('hidden').toggleClass('unselected');
+            var isDown = false;
+            $(document).one('mousedown', function() {
+                isDown = true;
+            })
+            .one('mouseup', function() {
+                isDown = false;
+            });
+            $('#grid-overlay td').one('mouseover', function() {
+                if(isDown) {
+                    $(this).removeClass('hidden').addClass('unselected');
+                }
+            });
         }
-    }).preventDefault();
-
-    $('#grid-overlay td').mousedown(function() {
-        $(this).removeClass().toggleClass('hidden');
-    }).preventDefault();
+    });
 }
 
 
+// disables show-area function when activating the hide-area tool
+function disableShowArea() {
+    var showCheckBox = document.getElementById('showSlider');
+    showCheckBox.checked = false;
+}
+
+// disables hide-area function when activating the show-area tool
+function disableHideArea() {
+    var hideCheckBox = document.getElementById('hideSlider');
+    hideCheckBox.checked = false;
+}
+
+// changes the grid width
 function changeGridWidth() {
     var $gwidth = document.getElementById('gridWidth').value;
     document.documentElement.style.setProperty('--grid-width', $gwidth+"px");
 }
 
 
+
+
+
+
+
+
+
+// sleeps for (ms * 1000) seconds
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// table to array test
 async function test() {
-    await sleep(2000);
-    if (document.contains(document.getElementById("grid-overlay"))) {
-        var table = document.getElementById("tbl");
-        var tr = table.getElementsByTagName("tr");
-        
-        var x = 3;
-        var y = 7;
-        let td = tr[x].getElementsByTagName("td")[y];
-        $(td).removeClass('unselected').addClass('selected');
-        /*for(j = 0; j < 10; j++) {
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[j];
-                if (td) {
-                    $(td).removeClass('unselected').addClass('selected');
-                    await sleep(250);
+    await sleep(4000);
+    $(document).ready(function() {
+        if (document.contains(document.getElementById("grid-overlay"))) {
+            var table = document.getElementById("tbl");
+            var tr = table.getElementsByTagName("tr");
+
+            var x = 1;
+            var y = 1;
+            let td = tr[x].getElementsByTagName("td")[y];
+            //$(td).removeClass('unselected').addClass('selected');
+            //$(td).innerHTML = '<img src="images/npc_token.png" width="32" height="32" />';
+            //$(td).append('<img src="images/npc_token.png" width="20" height="20" />');
+            /*for(j = 0; j < 10; j++) {
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[j];
+                    if (td) {
+                        $(td).removeClass('unselected').addClass('selected');
+                        await sleep(250);
+                    }
                 }
-            }
-        }*/
-    }
-    else {
-        ;
-    }
+            }*/
+        }
+        else {
+            ;
+        }
+    });
 }
+
+//test();
