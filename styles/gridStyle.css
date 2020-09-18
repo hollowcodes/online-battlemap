@@ -28,4 +28,5 @@ td {
 .unselected { background-color: none; }
 .selected { background-color: rgba(100, 26, 26, 0.5); }
 .hidden { background-color: rgba(0,0,0,0.4); }
+.npc { background-color: rgba(26, 100, 72, 0.5); }
 

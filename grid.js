@@ -42,17 +42,17 @@ function createGrid() {
         $(this).toggleClass('hover');
     });
 
-    $('#grid-overlay td').one('mousedown', function() {
+    $('#grid-overlay td').one('mousedown', function() {        
         var hideCheckBox = document.getElementById('hideSlider');
         var showCheckBox = document.getElementById('showSlider');
+        var npcCheckBox = document.getElementById('npcSlider');
 
         // normals map click
-        if (hideCheckBox.checked == false && showCheckBox.checked == false) {
+        if (hideCheckBox.checked == false && showCheckBox.checked == false && npcCheckBox.checked == false) {
             $(this).addClass('selected').toggleClass('unselected');
         }
         // hides areas
         else if(hideCheckBox.checked == true) {
-
             $(this).addClass('hidden').toggleClass('unselected');
 
             var isDown = false;
@@ -85,20 +85,80 @@ function createGrid() {
                 }
             });
         }
+        else if(npcCheckBox.checked == true) {
+            var file = document.getElementById('tokenChooser').files[0];
+
+            $(this).removeClass('selected');
+            //$(this).append('<img src="' + filePath + '" width="20" height="20" />');
+            var img = document.createElement("img");
+            img.style.width = $gsize - 5 + 'px'
+            img.style.height = $gsize - 5 + 'px'
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                img.src = reader.result;
+            }
+            reader.readAsDataURL(file);
+            $(this).append(img);
+        }
+        else {
+            ;
+        }
     });
-}
 
+    /*function readURL(input, td) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+          
+            reader.onload = function(e) {
+                $(td).append('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+        else {
+            console.log(2);
+        }
+    }
+      
+    $("#tokenChooser").change(function() {
+        $('#grid-overlay td').one('mousedown', function() {        
+            readURL("#tokenChooser", '#grid-overlay td');
+            console.log(1);
+        });
+    });
 
-// disables show-area function when activating the hide-area tool
-function disableShowArea() {
-    var showCheckBox = document.getElementById('showSlider');
-    showCheckBox.checked = false;
-}
+    $('#tokenChooser').change(function(){
+        var frm = new FormData();
+        frm.append('tokenChooser', input.files[0]);
+        $.ajax({
+            method: 'POST',
+            address: 'images/image',
+            data: frm,
+            contentType: false,
+            processData: false,
+            cache: false
+        });
+    });*/
+    
+    //if(document.getElementById('npcSlider').checked == true) {
 
-// disables hide-area function when activating the show-area tool
-function disableHideArea() {
-    var hideCheckBox = document.getElementById('hideSlider');
-    hideCheckBox.checked = false;
+    /*$('#tokenChooser').on('change',function () {
+        //FIX 
+        $('#grid-overlay td').one('mousedown', function() {
+            var file = document.getElementById('tokenChooser').files[0];
+
+            $(this).removeClass('hidden').removeClass('selected');
+            //$(this).append('<img src="' + filePath + '" width="20" height="20" />');
+            var img = document.createElement("img");
+            img.style.width = '25px'
+            img.style.height = '25px'
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                img.src = reader.result;
+            }
+            reader.readAsDataURL(file);
+            $(this).append(img);
+        });
+    });*/
 }
 
 // changes the grid width
@@ -106,13 +166,6 @@ function changeGridWidth() {
     var $gwidth = document.getElementById('gridWidth').value;
     document.documentElement.style.setProperty('--grid-width', $gwidth+"px");
 }
-
-
-
-
-
-
-
 
 
 // sleeps for (ms * 1000) seconds

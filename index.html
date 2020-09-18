@@ -54,7 +54,7 @@
                     <label for="hideAreaSwitch" id="hideSwitchLabel"><b>hide-area tool:</b></label><br><br>
 
                     <label class="hideAreaSwitch">
-                        <input id="hideSlider" type="checkbox" onclick="disableShowArea()">
+                        <input id="hideSlider" type="checkbox" onclick="disableSwitches('hideSlider')">
                         <span class="slider"></span>
                     </label>
                 </div>
@@ -64,17 +64,26 @@
                     <label for="showAreaSwitch" id="showSwitchLabel"><b>show-area tool:</b></label><br><br>
 
                     <label class="showAreaSwitch">
-                        <input id="showSlider" type="checkbox" onclick="disableHideArea()">
+                        <input id="showSlider" type="checkbox" onclick="disableSwitches('showSlider')">
                         <span class="slider"></span>
                     </label>
                 </div>
 
                 <!-- place NPC -->
+                <div id="placeNpc">
+                    <label for="placeNpcSwitch" id="placeNpcLabel"><b>place NPC:</b></label><br><br>
+                    <input type="file" id="tokenChooser" name="tokenChooser" accept="image/*" onclick="activateNpcSwitch();">
+
+                    <label class="placeNpcSwitch">
+                        <input id="npcSlider" type="checkbox" onclick="disableSwitches('npcSlider')">
+                        <span class="slider"></span>
+                    </label>
+                </div>
 
             </div>
         </div>
 
-        <div id="grid-source"><img src="images/dungeon.jpeg"></div>
+        <div id="grid-source"><img src="images/battlemap2.jpg"></div>
 
     </body>
 

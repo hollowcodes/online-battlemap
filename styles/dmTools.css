@@ -75,8 +75,40 @@ input:checked + .slider:before {
 .showAreaSwitch { 
     position: absolute; 
     display: inline-block; 
-    top: 148px; 
+    top: 140px; 
     left: 200px; 
     width: 60px; 
     height: 34px; 
 }
+
+/* place NPC */
+#placeNpcLabel {
+    position: absolute; 
+    top: 220px; 
+    font-size: 20px; 
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+.placeNpcSwitch {
+    position: absolute;
+    display: inline-block;
+    top: 255px;
+    left: 200px;
+    width: 60px;
+    height: 34px;
+}
+
+#tokenChooser::-webkit-file-upload-button {
+    font-family: Arial, Helvetica, sans-serif; 
+    
+    position: absolute;
+    top: 255px;
+    height: 43px;
+    width: 120px;
+    border-radius: 10px;
+    border-width: 3px;
+    border-color: rgb(210, 210, 210);
+    box-shadow: none;
+}
+
+
